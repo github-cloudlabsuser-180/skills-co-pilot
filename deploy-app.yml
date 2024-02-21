@@ -1,0 +1,28 @@
+name: Email Report
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  send_report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Send email report
+        run: |
+          # Add your email sending logic here
+          # For example, you can use a command-line tool like `sendmail` or a library like `nodemailer`
+          echo "Sending email report..."
+          cat path/to/report.txt | sendmail -t recipient@example.com
